@@ -4,18 +4,6 @@ A TypeScript-based Employee Management System implementing an organizational hie
 
 ---
 
-## Table of Contents
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Project Setup & Installation](#project-setup--installation)
-- [Execution Commands](#execution-commands)
-- [Project Structure](#project-structure)
-- [Design Approach & Architecture](#design-approach--architecture)
-- [Key Assumptions & Business Rules](#key-assumptions--business-rules)
-
----
-
 ## Features
 
 - **Strict Organizational Hierarchy**: Enforces a top-down corporate chain of command (`CEO` &rarr; `Director` &rarr; `Manager` &rarr; `Lead` &rarr; `Engineer`).
@@ -29,69 +17,13 @@ A TypeScript-based Employee Management System implementing an organizational hie
 
 ---
 
-## Prerequisites
-
-- **Node.js**: `v18.0.0` or higher (`v20+` or `v24+` recommended).
-- **npm**: `v9.0.0` or higher.
-
-To check your installed versions:
-```bash
-node -v
-npm -v
-```
-
-> **Windows / PowerShell Tip**: If PowerShell restricts script execution (`PSSecurityException`), run commands with `.cmd` (e.g., `npm.cmd install` or `npx.cmd tsx ...`) or adjust your execution policy for the current session:
-> ```powershell
-> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-> ```
-
----
-
 ## Project Setup & Installation
+### Run (via npx)
 
-### Option 1: Standard Installation (Recommended)
-
-1. Clone or open the project folder in your terminal:
-   ```bash
-   cd D:/Projects/Typescript
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Option 2: Zero-Install Quick Run (via npx)
-
-If you prefer not to install local `node_modules`, you can run the application directly using `npx tsx`:
+You can run the application directly using `npx tsx`:
 ```bash
 npx tsx src/index.ts
 ```
-
----
-
-## Execution Commands
-
-| Task | Command | Description |
-| :--- | :--- | :--- |
-| **Run Demonstration Tests** | `npm start` | Executes `src/index.ts` using `tsx` (TypeScript execute). |
-| **Direct Execution** | `npx tsx src/index.ts` | Runs the test suite directly without needing compilation. |
-| **Type Check** | `npm run type-check` | Performs TypeScript static type checking without emitting files (`tsc --noEmit`). |
-| **Build Project** | `npm run build` | Compiles TypeScript files from `src/` into JavaScript in `dist/`. |
-| **Run Compiled Build** | `node dist/index.js` | Runs the compiled JavaScript application using Node.js. |
-
-### Running the Test & Demo Suite
-
-Executing `npm start` runs `src/index.ts`, which tests the following scenarios:
-1. **Employee Info Validation**: Rejection of empty names, malformed dates, invalid months, and non-leap year Feb 29.
-2. **Hierarchy Validation**: Blocking CEO from reporting to anyone, requiring supervisors for subordinate roles, and disallowing Engineers from having reportees.
-3. **Creation with Valid Hierarchy**: Sequential creation of CEO, Director, Manager, Lead, and Engineer.
-4. **Duplicate ID & Second CEO Checks**: Ensuring unique identifiers and enforcing a single CEO constraint.
-5. **Retrieval**: Querying existing employees by ID, querying all employees, and handling non-existent IDs.
-6. **Updates**: Partial updates (name, DOB, reportees list) and validation on modified fields.
-7. **Deletion Safety**: Preventing deletion of employees with active reportees, reassigning reportees, and successfully deleting leaf employees.
-
----
 
 ## Project Structure
 
